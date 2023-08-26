@@ -6,3 +6,9 @@ sky:
     database: sky_take_out
     username: root
     password: 123456
+
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tJYLFRgMMzvYoT7BC3L
+    access-key-secret: eju2kW5HBvNGvpQGC2qFQzB3BWeBUO
+    bucket-name: sky-mirrorseek
