@@ -12,3 +12,8 @@ sky:
     access-key-id: LTAI5tJYLFRgMMzvYoT7BC3L
     access-key-secret: eju2kW5HBvNGvpQGC2qFQzB3BWeBUO
     bucket-name: sky-mirrorseek
+  redis:
+    host: localhost
+    port: 6379
+    database: 1
+
