@@ -16,7 +16,7 @@ sky:
   redis:
     host: localhost
     port: 6379
-    database: 1
+    database: 0
 
   wechat:
     appid: wxb0ea489a37fcb228

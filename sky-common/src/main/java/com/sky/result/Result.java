@@ -35,4 +35,8 @@ public class Result<T> implements Serializable {
         return result;
     }
 
+    public static <T> Result<T> failure(String msg) {
+        return error(msg);
+    }
+
 }
