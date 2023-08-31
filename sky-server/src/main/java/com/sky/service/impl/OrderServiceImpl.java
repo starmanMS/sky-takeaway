@@ -134,16 +134,18 @@ public class OrderServiceImpl implements OrderService {
         User user = userMapper.getById(userId);
 
         //调用微信支付接口，生成预支付交易单
-        JSONObject jsonObject = weChatPayUtil.pay(
-                ordersPaymentDTO.getOrderNumber(), //商户订单号
-                new BigDecimal(0.01), //支付金额，单位 元
-                "苍穹外卖订单", //商品描述
-                user.getOpenid() //微信用户的openid
-        );
-
+//        JSONObject jsonObject = weChatPayUtil.pay(
+//                ordersPaymentDTO.getOrderNumber(), //商户订单号
+//                new BigDecimal(0.01), //支付金额，单位 元
+//                "苍穹外卖订单", //商品描述
+//                user.getOpenid() //微信用户的openid
+//        );
+//
+        JSONObject jsonObject = new JSONObject();
         if (jsonObject.getString("code") != null && jsonObject.getString("code").equals("ORDERPAID")) {
             throw new OrderBusinessException("该订单已支付");
         }
+
 
         OrderPaymentVO vo = jsonObject.toJavaObject(OrderPaymentVO.class);
         vo.setPackageStr(jsonObject.getString("package"));
@@ -169,10 +171,18 @@ public class OrderServiceImpl implements OrderService {
                 .checkoutTime(LocalDateTime.now())
                 .build();
 
+
+//        Orders orders = new Orders();
+//        orders.setId(ordersDB.getId());
+//        orders.setStatus(Orders.TO_BE_CONFIRMED);
+//        orders.setPayStatus(Orders.PAID);
+//        orders.setCheckoutTime(LocalDateTime.now());
+
         orderMapper.update(orders);
+
         // 通过websocket向客户端浏览器推送消息 type orderId content
         Map<String, Object> map = new HashMap<>();
-        map.put("type" ,1); // 1表示来单提醒，2表示客户催单
+        map.put("type", 1); // 1表示来单提醒，2表示客户催单
         map.put("orderId", ordersDB.getId());
         map.put("content", "订单号:" + outTradeNo);
 
