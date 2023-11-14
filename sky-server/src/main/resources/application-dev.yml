@@ -8,10 +8,10 @@ sky:
     password: 123456
 
   alioss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tJYLFRgMMzvYoT7BC3L
-    access-key-secret: eju2kW5HBvNGvpQGC2qFQzB3BWeBUO
-    bucket-name: sky-mirrorseek
+    endpoint:
+    access-key-id:
+    access-key-secret:
+    bucket-name:
 
   redis:
     host: localhost
@@ -19,8 +19,8 @@ sky:
     database: 0
 
   wechat:
-    appid: wxb0ea489a37fcb228
-    secret: ae0636711cb7154ead78010dd86fbab0
+    appid:
+    secret:
     mchid:
     mchSerialNo:
     privateKeyFilePath:
